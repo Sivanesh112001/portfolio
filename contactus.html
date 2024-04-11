@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/css/contactus.css">
+    <link rel="icon" href="./images/website/contact.png">
+    <title>contact me</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.3.0/classic/ckeditor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1 class="head">Contact Me</h1>
+    <div class="middle">
+        <form name="contact" id="form" action="" method="POST">
+            <label class="label" for="name">Name: </label><br>
+            <input  type="text" id="name" name="name" placeholder="Enter the name" size="30"><br>
+            <p class="error" id="name-error"></p>
+            <label class="label" for="email">Email: </label><br>
+            <input type="email" id="email" name="email" placeholder="enter the valid  email address" size="30"><br>
+            <p class="error" id="email-error"></p>
+            <label class="label" for="email">Phone number </label><br>
+            <input type="text" id="phone" name="phone" placeholder="enter the valid Phone number" size="30"><br>
+            <p class="error" id="phone-error"></p>
+            <label  class="label" for="message">Message: </label><br>
+            <textarea id="message" name="message" rows="5" cols="30" placeholder="enter the message"></textarea><br><br>
+            <center><button input="submit" id="button" class="bn29">Submit</button></center>
+        </form>
+        <span id="msg"></span>
+    </div>
+
+<!-- <script>
+    $(document).ready(function() {
+    $("#form").on('submit', function(e){
+        
+        e.preventDefault();
+        var isValid = true;
+        // validate name
+        let name = $("#name").val().trim();
+        if(name == "") {
+            $("#name-error").text("Name is required");
+            $("#name-error").css("color","red");
+            return false;
+        } else {
+            $("#name-error").empty();
+        }
+        // validate email
+        let email = $("#email").val().trim();
+        if(email == "") {
+            $("#email-error").text("Email is required");
+            $("#email-error").css("color","red");
+            return false;
+        } else {
+                $("#email-error").empty();
+            }
+        // validate phone number
+        let phone = $("#phone").val().trim();
+        if(phone == "") {
+            $("#phone-error").text("Phone Number is Required!");
+            $("#phone-error").css("color", "red");
+            return false;
+        } else {
+                $("#phone-error").empty();
+            }
+             // validate phone number
+        let message = $("#message").val().trim();
+        if(message == "") {
+            $("#message-error").text("Phone Number is Required!");
+            $("#message-error").css("color", "red");
+            return false;
+        } else {
+                $("#message-error").empty();
+            }
+        // submit the form
+        this.submit();
+    });
+});
+</script> -->
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzhtmGnRaKdLolbZR9ZkBh_AfBoOe5NSBIOD6-UF0yYdWpggXuJUtGNWDbQOQ7zLbTa/exec'
+    const form = document.forms['contact']
+    const msg = document.getElementById("msg")
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      //name
+      let name = $("#name").val().trim();
+        if(name == "") {
+            $("#name-error").text("Name is required");
+            $("#name-error").css("color","red");
+            return false;
+        } else {
+            $("#name-error").empty();
+        }
+        //email
+        let email = $("#email").val().trim();
+        if(email == "") {
+            $("#email-error").text("Email is required");
+            $("#email-error").css("color","red");
+            return false;
+        } else {
+                $("#email-error").empty();
+            }
+        // validate phone number
+        let phone = $("#phone").val().trim();
+        if(phone == "") {
+            $("#phone-error").text("Phone Number is Required!");
+            $("#phone-error").css("color", "red");
+            return false;
+        } else {
+                $("#phone-error").empty();
+            }
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response =>{
+            msg.innerHTML="Message Sent Successfully"
+            setTimeout(function(){
+                    msg.innerHTML=""
+
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  <!-- <script>
+    ClassicEditor
+            .create( document.querySelector( '#message' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+</script> -->
+</body>
+</html>
